@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-//    id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
     id("org.jetbrains.kotlin.kapt")
 }
@@ -40,10 +39,14 @@ android {
         correctErrorTypes = true // Allow references to generated code
         useBuildCache = true
     }
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
 }
 
 dependencies {
-    val androidxCoreVersion = "1.12.0"
+    val androidxCoreVersion = "1.2.0"
     val androidxAppCompatVersion = "1.6.1"
     val constraintLayoutVersion = "2.1.4"
     val materialVersion = "1.11.0"
@@ -66,7 +69,7 @@ dependencies {
     testImplementation("junit:junit:$junitVersion")
     androidTestImplementation("junit:junit:$junitVersion")
 
-    testImplementation("androidx.test.ext:$extJunitVersion")
+    testImplementation("androidx.test.ext:junit:$extJunitVersion")
     androidTestImplementation("androidx.test.ext:junit:$extJunitVersion")
 
     // Core library

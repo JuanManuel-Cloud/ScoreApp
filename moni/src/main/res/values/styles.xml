@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme.TabLayout" parent="Base.Theme.ScoreApp">
+        <item name="tabIndicatorColor">@color/primary</item>
+        <item name="tabTextColor">@color/dark</item>
+        <item name="tabSelectedTextColor">@color/primary</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabIndicator">@drawable/tab_indicator</item>
+    </style>
+</resources>

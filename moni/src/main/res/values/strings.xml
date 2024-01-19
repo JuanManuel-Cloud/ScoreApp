@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">ScoreApp</string>
+    <string name="tab_scorer">Scorer</string>
+    <string name="tab_record">Historial</string>
+    <string name="hint_name">Nombre</string>
+    <string name="hint_lastname">Apellido</string>
+    <string name="hint_dni">DNI</string>
+    <string name="hint_email">email</string>
+    <string name="home_evaluate">Evaluar</string>
+    <string name="home_header">Bienvenido, ingrese los datos del usuario a evaluar para conocer su score</string>
+    <string name="home_rb_male">Masculino</string>
+    <string name="home_rb_female">Femenino</string>
+    <string name="home_rb_other">Otro</string>
 </resources>
