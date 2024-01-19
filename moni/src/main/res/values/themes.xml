@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.ScoreApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorAccent">@color/primary</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:colorBackground">@color/light</item>
+        <item name="android:textColorPrimary">@color/dark</item>
+        <item name="android:textColorSecondary">@color/secondary</item>
+        <item name="android:statusBarColor" >?attr/colorPrimary</item>
+        <item name="android:navigationBarColor" >?attr/colorPrimary</item>
+    </style>
+
+    <style name="Theme.ScoreApp" parent="Base.Theme.ScoreApp" />
+</resources>
