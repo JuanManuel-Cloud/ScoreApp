@@ -11,4 +11,10 @@
     <string name="home_rb_male">Masculino</string>
     <string name="home_rb_female">Femenino</string>
     <string name="home_rb_other">Otro</string>
+    <string name="approved_body">Felicitaciones! Le informamos que el cliente ha obtenido el score
+        suficiente para solicitar un préstamo personal</string>
+    <string name="rejected_body">Lamentamos informarle que el cliente no consiguió el suficiente
+        score para recibir un préstamo personal</string>
+    <string name="rejected_btn">Regresar</string>
+    <string name="approved_btn">Regresar</string>
 </resources>
