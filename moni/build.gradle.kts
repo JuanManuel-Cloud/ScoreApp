@@ -107,7 +107,6 @@ dependencies {
     kapt("androidx.hilt:hilt-compiler:1.1.0")
 
     // Testing
-
     // Testing-JUnit
     testImplementation("junit:junit:$junitVersion")
     androidTestImplementation("junit:junit:$junitVersion")
@@ -119,6 +118,7 @@ dependencies {
     androidTestImplementation("androidx.test:core:$androidXTestVersion")
 
     // Testing - AndroidJUnitRunner and JUnit Rules
+    testImplementation("androidx.test:runner:$testRunnerVersion")
     androidTestImplementation("androidx.test:runner:$testRunnerVersion")
     androidTestImplementation("androidx.test:rules:$testRulesVersion")
 
