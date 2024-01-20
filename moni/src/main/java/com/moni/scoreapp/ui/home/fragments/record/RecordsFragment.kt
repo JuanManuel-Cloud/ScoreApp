@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.moni.scoreapp.databinding.FragmentRecordBinding
-import data.guimodels.RecordGuiModel
+import com.moni.scoreapp.data.local.guimodels.RecordGuiModel
 
 class RecordsFragment : Fragment() {
     private var _binding: FragmentRecordBinding? = null

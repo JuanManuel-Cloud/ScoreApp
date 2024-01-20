@@ -1,4 +1,4 @@
-package com.moni.scoreapp.ui.home.data.enums
+package com.moni.scoreapp.data.local.enums
 
 enum class RecordStatus {
     APPROVED, REJECTED

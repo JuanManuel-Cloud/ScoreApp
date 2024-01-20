@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.google.android.material.button.MaterialButton
 import com.moni.scoreapp.R
-import com.moni.scoreapp.ui.home.data.enums.RecordStatus
-import data.guimodels.RecordGuiModel
+import com.moni.scoreapp.data.local.enums.RecordStatus
+import com.moni.scoreapp.data.local.guimodels.RecordGuiModel
 import java.time.format.DateTimeFormatter
 import kotlin.math.max
 
