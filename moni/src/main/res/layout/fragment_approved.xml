@@ -21,7 +21,7 @@
             android:layout_marginEnd="16dp"
             android:gravity="center"
             android:text="@string/approved_body"
-            android:textColor="@color/dark_green"
+            android:textColor="@color/green50"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/approved_img"
@@ -39,7 +39,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/approved_msg"
-            app:tint="@color/dark_green"
+            app:tint="@color/green50"
             tools:ignore="ContentDescription" />
 
         <Button
@@ -51,7 +51,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:text="@string/approved_btn"
-            app:backgroundTint="@color/dark_green"
+            app:backgroundTint="@color/green50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/approved_img" />

@@ -21,7 +21,7 @@
             android:layout_marginEnd="16dp"
             android:gravity="center"
             android:text="@string/rejected_body"
-            android:textColor="@color/error"
+            android:textColor="@color/error50"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/rejected_img"
@@ -39,7 +39,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rejected_msg"
-            app:tint="@color/error"
+            app:tint="@color/error50"
             tools:ignore="ContentDescription" />
 
         <Button
@@ -51,7 +51,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:text="@string/rejected_btn"
-            app:backgroundTint="@color/error"
+            app:backgroundTint="@color/error50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rejected_img" />

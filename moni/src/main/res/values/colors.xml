@@ -6,7 +6,10 @@
     <color name="light">#ECF2FC</color>
     <color name="primary">#5C94E4</color>
     <color name="secondary">#C4DBF4</color>
-    <color name="dark_green">#75A58D</color>
-    <color name="light_green">#BBEBD3</color>
-    <color name="error">#FF686B</color>
+    <color name="green10">#35634E</color>
+    <color name="green50">#75A58D</color>
+    <color name="green80">#BBEBD3</color>
+    <color name="error10">#890016</color>
+    <color name="error50">#D7444C</color>
+    <color name="error80">#FFA7A4</color>
 </resources>

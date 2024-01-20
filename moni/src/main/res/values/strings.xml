@@ -17,4 +17,5 @@
         score para recibir un préstamo personal</string>
     <string name="rejected_btn">Regresar</string>
     <string name="approved_btn">Regresar</string>
+    <string name="empty_records">Aún no hay registros del score de ningún cliente</string>
 </resources>

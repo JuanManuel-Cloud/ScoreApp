@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayout
 import com.moni.scoreapp.R
-import com.moni.scoreapp.ui.home.fragments.RecordFragment
+import com.moni.scoreapp.ui.home.fragments.record.RecordsFragment
 import com.moni.scoreapp.databinding.ActivityHomeBinding
 import com.moni.scoreapp.databinding.CustomToolbarBinding
 import com.moni.scoreapp.ui.home.fragments.ApprovedFragment
@@ -54,9 +54,9 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun goToRecordFragment() {
-        val recordFragment = RecordFragment()
+        val recordsFragment = RecordsFragment()
         supportFragmentManager.beginTransaction()
-            .replace(R.id.home_fragment_container, recordFragment).commit()
+            .replace(R.id.home_fragment_container, recordsFragment).commit()
     }
 
     private fun goToApprovedFragment() {

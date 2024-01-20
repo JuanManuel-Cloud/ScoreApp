@@ -59,11 +59,13 @@ dependencies {
     val roomVersion = "2.6.1"
     val retrofitVersion = "2.9.0"
     val hiltVersion = "2.44"
+    val fragmentVersion = "1.6.2"
 
     implementation("androidx.core:core-ktx:$androidxCoreVersion")
     implementation("androidx.appcompat:appcompat:$androidxAppCompatVersion")
     implementation("com.google.android.material:material:$materialVersion")
     implementation("androidx.constraintlayout:constraintlayout:$constraintLayoutVersion")
+    implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
 
     // JUnit
     testImplementation("junit:junit:$junitVersion")

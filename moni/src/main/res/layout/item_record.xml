@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_record"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="4dp"
+    android:checkable="true"
+    android:clickable="true"
+    android:focusable="true"
+    app:strokeWidth="0dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/card_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_approved"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/green50"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/card_name"
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/card_delete_btn"
+            app:layout_constraintStart_toEndOf="@+id/card_ic"
+            app:layout_constraintTop_toTopOf="@+id/card_ic"
+            tools:text="Fernando Alonso" />
+
+        <TextView
+            android:id="@+id/card_date"
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintBottom_toBottomOf="@+id/card_ic"
+            app:layout_constraintEnd_toStartOf="@+id/card_delete_btn"
+            app:layout_constraintStart_toStartOf="@+id/card_name"
+            app:layout_constraintTop_toBottomOf="@+id/card_name"
+            tools:text="19-01-24" />
+
+        <Button
+            android:id="@+id/card_delete_btn"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_delete"
+            app:iconSize="32dp"
+            app:iconTint="@color/error50"
+            app:layout_constraintBottom_toBottomOf="@+id/card_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/card_name" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
