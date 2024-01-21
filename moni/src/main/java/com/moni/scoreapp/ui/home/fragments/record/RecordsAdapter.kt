@@ -33,7 +33,7 @@ class RecordsAdapter(
             clientName.text = record.clientName
             date.text = record.date.format(DateTimeFormatter.ofPattern("dd-MM-yy"))
             when (record.status) {
-                RecordStatus.APPROVED -> {
+                RecordStatus.APPROVE -> {
                     cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.green50))
                     cardIcon.setImageResource(R.drawable.ic_approved)
                 }

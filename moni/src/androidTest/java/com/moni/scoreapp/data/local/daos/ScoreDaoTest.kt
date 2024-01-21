@@ -28,6 +28,7 @@ class ScoreDaoTest {
     private lateinit var database: ScoreDatabase
     private lateinit var dao: ScoreDao
     private lateinit var mockRecordItem: RecordItem
+    private lateinit var mockRecordItem2: RecordItem
 
     @Before
     fun setup() {
@@ -38,15 +39,16 @@ class ScoreDaoTest {
         dao = database.scoreDao()
 
         mockRecordItem = RecordItem(
-            id = 1,
+            id = "1",
             name = "Fernando",
             lastname = "Alonso",
             dni = "12121212",
             email = "fernando@f1.com",
             gender = Genders.MALE,
-            status = RecordStatus.APPROVED,
+            status = RecordStatus.APPROVE,
             createdDate = Instant.ofEpochSecond(1620000000)
         )
+        mockRecordItem2 = mockRecordItem.copy(id = "2", lastname = "Cavenaghi")
     }
 
     @After
@@ -64,7 +66,17 @@ class ScoreDaoTest {
     }
 
     @Test
-    fun deleteShoppingItem() = runBlocking {
+    fun insertManyRecordItems() = runBlocking {
+        dao.insertManyRecords(listOf(mockRecordItem, mockRecordItem2))
+
+        val allRecordItems = dao.getAllRecords().getOrAwaitValue()
+
+        assertThat(allRecordItems).contains(mockRecordItem)
+        assertThat(allRecordItems).contains(mockRecordItem2)
+    }
+
+    @Test
+    fun deleteRecordItem() = runBlocking {
         dao.insertRecord(mockRecordItem)
         dao.deleteRecord(mockRecordItem)
 
@@ -77,18 +89,17 @@ class ScoreDaoTest {
     fun getRecordsByDni() = runBlocking {
         dao.insertRecord(mockRecordItem)
 
-        val recordItems = dao.getRecordsByDniNameOrLastname("12121212").getOrAwaitValue()
+        val recordItems = dao.findRecords("12121212").getOrAwaitValue()
 
         assertThat(recordItems).contains(mockRecordItem)
     }
 
     @Test
     fun getRecordsByName() = runBlocking {
-        val mockRecordItem2 = mockRecordItem.copy(id = 2, lastname = "Cavenaghi")
         dao.insertRecord(mockRecordItem)
         dao.insertRecord(mockRecordItem2)
 
-        val recordItems = dao.getRecordsByDniNameOrLastname("Fernando").getOrAwaitValue()
+        val recordItems = dao.findRecords("Fernando").getOrAwaitValue()
 
         assertThat(recordItems).contains(mockRecordItem)
         assertThat(recordItems).contains(mockRecordItem2)

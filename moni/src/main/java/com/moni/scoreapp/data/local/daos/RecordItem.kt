@@ -9,8 +9,8 @@ import java.time.ZonedDateTime
 
 @Entity(tableName = "record_item")
 data class RecordItem(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    @PrimaryKey
+    val id: String,
     val name: String,
     val lastname: String,
     val dni: String,

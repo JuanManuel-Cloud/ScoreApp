@@ -8,7 +8,7 @@ import com.moni.scoreapp.data.local.Converters
 @Database(
     entities = [RecordItem::class],
     exportSchema = false,
-    version = 1
+    version = 2
 )
 @TypeConverters(Converters::class)
 abstract class ScoreDatabase : RoomDatabase() {

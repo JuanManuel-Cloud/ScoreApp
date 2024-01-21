@@ -2,7 +2,19 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="ScoreDaoTest">
+        <State />
+      </entry>
       <entry key="app">
+        <State />
+      </entry>
+      <entry key="deleteShoppingItem()">
+        <State />
+      </entry>
+      <entry key="getRecordsByDni()">
+        <State />
+      </entry>
+      <entry key="getRecordsByName()">
         <State />
       </entry>
       <entry key="insertRecordItem()">

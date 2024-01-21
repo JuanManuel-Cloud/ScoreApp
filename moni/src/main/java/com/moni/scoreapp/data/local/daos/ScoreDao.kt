@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Transaction
 
 @Dao
 interface ScoreDao {
@@ -20,6 +21,9 @@ interface ScoreDao {
     @Query("SELECT * FROM record_item")
     fun getAllRecords(): LiveData<List<RecordItem>>
 
+    /**
+     * Find records by name, lastname or dni
+     */
     @Query("SELECT * FROM record_item WHERE dni LIKE :query OR name LIKE :query OR lastname LIKE :query")
-    fun getRecordsByDniNameOrLastname(query: String): LiveData<List<RecordItem>>
+    fun findRecords(query: String): LiveData<List<RecordItem>>
 }
