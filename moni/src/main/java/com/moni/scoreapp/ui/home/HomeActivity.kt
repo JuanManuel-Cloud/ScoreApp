@@ -50,25 +50,25 @@ class HomeActivity : AppCompatActivity() {
         binding.customToolbar.tabLayout.addOnTabSelectedListener(tabSelectedListener)
     }
 
-    private fun goToScorerFragment() {
+    fun goToScorerFragment() {
         val scorerFragment = ScorerFragment()
         supportFragmentManager.beginTransaction()
             .replace(R.id.home_fragment_container, scorerFragment).commit()
     }
 
-    private fun goToRecordFragment() {
+    fun goToRecordFragment() {
         val recordsFragment = RecordsFragment()
         supportFragmentManager.beginTransaction()
             .replace(R.id.home_fragment_container, recordsFragment).commit()
     }
 
-    private fun goToApprovedFragment() {
+    fun goToApprovedFragment() {
         val approvedFragment = ApprovedFragment()
         supportFragmentManager.beginTransaction()
             .replace(R.id.home_fragment_container, approvedFragment).commit()
     }
 
-    private fun goToRejectedFragment() {
+    fun goToRejectedFragment() {
         val rejectedFragment = RejectedFragment()
         supportFragmentManager.beginTransaction()
             .replace(R.id.home_fragment_container, rejectedFragment).commit()

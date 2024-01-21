@@ -10,6 +10,7 @@ import com.moni.scoreapp.data.local.daos.ScoreDatabase
 import com.moni.scoreapp.data.local.enums.Genders
 import com.moni.scoreapp.data.local.enums.RecordStatus
 import com.moni.scoreapp.data.remote.GendersDeserializer
+import com.moni.scoreapp.data.remote.InstantDeserializer
 import com.moni.scoreapp.data.remote.MoniAPI
 import com.moni.scoreapp.data.remote.MoniFirebaseAPI
 import com.moni.scoreapp.data.remote.StatusDeserializer
@@ -28,6 +29,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.time.Instant
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -60,6 +62,7 @@ object AppModule {
         return GsonBuilder()
             .registerTypeAdapter(Genders::class.java, GendersDeserializer())
             .registerTypeAdapter(RecordStatus::class.java, StatusDeserializer())
+            .registerTypeAdapter(Instant::class.java, InstantDeserializer())
             .create()
     }
 

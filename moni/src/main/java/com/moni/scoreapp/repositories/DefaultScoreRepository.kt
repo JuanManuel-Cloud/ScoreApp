@@ -1,5 +1,6 @@
 package com.moni.scoreapp.repositories
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.moni.scoreapp.data.local.daos.RecordItem
 import com.moni.scoreapp.data.local.daos.ScoreDao

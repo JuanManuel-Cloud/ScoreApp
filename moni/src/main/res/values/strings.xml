@@ -18,4 +18,9 @@
     <string name="rejected_btn">Regresar</string>
     <string name="approved_btn">Regresar</string>
     <string name="empty_records">Aún no hay registros del score de ningún cliente</string>
+    <string name="input_name_error">El nombre no es válido</string>
+    <string name="input_lastname_error">El apellido no es válido</string>
+    <string name="input_dni_error">El DNI no es válido</string>
+    <string name="input_email_error">El email no es válido</string>
+    <string name="server_error">Ocurrió un error al conectarse con el servidor, reintente</string>
 </resources>
