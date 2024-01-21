@@ -62,9 +62,10 @@ dependencies {
     val roomVersion = "2.6.1"
     val retrofitVersion = "2.9.0"
     val hiltVersion = "2.48"
-    val vmHiltVersion = "1.0.0-alpha03"
+    val hiltCompilerVersion = "1.1.0"
     val fragmentVersion = "1.6.2"
     val navigationVersion = "2.7.6"
+    val testingCoreArchVersion = "2.2.0"
 
     implementation("androidx.core:core-ktx:$androidxCoreVersion")
     implementation("androidx.appcompat:appcompat:$androidxAppCompatVersion")
@@ -104,7 +105,7 @@ dependencies {
     // Hilt
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
-    kapt("androidx.hilt:hilt-compiler:1.1.0")
+    kapt("androidx.hilt:hilt-compiler:$hiltCompilerVersion")
 
     // Testing
     // Testing-JUnit
@@ -115,6 +116,8 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:$extJunitVersion")
 
     // Testing - Core library
+    testImplementation("androidx.arch.core:core-testing:$testingCoreArchVersion")
+    androidTestImplementation("androidx.arch.core:core-testing:$testingCoreArchVersion")
     androidTestImplementation("androidx.test:core:$androidXTestVersion")
 
     // Testing - AndroidJUnitRunner and JUnit Rules
