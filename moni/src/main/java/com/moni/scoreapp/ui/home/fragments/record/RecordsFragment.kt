@@ -5,14 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.moni.scoreapp.databinding.FragmentRecordBinding
 import com.moni.scoreapp.data.local.guimodels.RecordGuiModel
+import com.moni.scoreapp.ui.home.HomeViewModel
 
 class RecordsFragment : Fragment() {
+    private lateinit var viewModel: HomeViewModel
+
     private var _binding: FragmentRecordBinding? = null
     private val binding get() = _binding!!
     private val records = mutableListOf<RecordGuiModel>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,6 +28,8 @@ class RecordsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
+
         val recordsAdapter = RecordsAdapter(requireContext(), records)
 
         val rv = binding.recordsList

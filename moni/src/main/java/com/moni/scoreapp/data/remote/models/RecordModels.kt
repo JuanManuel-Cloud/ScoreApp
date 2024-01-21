@@ -1,7 +1,6 @@
 package com.moni.scoreapp.data.remote.models
 
 import com.google.gson.annotations.SerializedName
-import com.moni.scoreapp.data.local.daos.RecordItem
 import com.moni.scoreapp.data.local.enums.Genders
 import com.moni.scoreapp.data.local.enums.RecordStatus
 import java.time.Instant
@@ -29,18 +28,7 @@ data class RecordRs(
 
 data class RecordRq(
     val fields: Fields
-) {
-    constructor(recordItem: RecordItem) : this(
-        fields = Fields(
-            apellido = Apellido(recordItem.lastname),
-            dni = Dni(recordItem.dni),
-            email = Email(recordItem.email),
-            genero = Genero(recordItem.gender),
-            nombre = Nombre(recordItem.name),
-            status = Status(recordItem.status)
-        )
-    )
-}
+)
 
 data class Fields(
     val apellido: Apellido,

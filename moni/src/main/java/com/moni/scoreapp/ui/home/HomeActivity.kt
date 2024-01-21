@@ -10,13 +10,16 @@ import com.moni.scoreapp.databinding.CustomToolbarBinding
 import com.moni.scoreapp.ui.home.fragments.ApprovedFragment
 import com.moni.scoreapp.ui.home.fragments.RejectedFragment
 import com.moni.scoreapp.ui.home.fragments.ScorerFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var toolbarBinding: CustomToolbarBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityHomeBinding.inflate(layoutInflater)
         toolbarBinding = CustomToolbarBinding.bind(binding.root)
         setContentView(binding.root)
@@ -64,6 +67,7 @@ class HomeActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.home_fragment_container, approvedFragment).commit()
     }
+
     private fun goToRejectedFragment() {
         val rejectedFragment = RejectedFragment()
         supportFragmentManager.beginTransaction()

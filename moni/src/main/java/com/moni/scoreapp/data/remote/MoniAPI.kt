@@ -9,7 +9,7 @@ import retrofit2.http.Header
 import retrofit2.http.Path
 
 interface MoniAPI {
-    @GET("/v4/scoring/pre-score/{dni}")
+    @GET("/api/v4/scoring/pre-score/{dni}")
     suspend fun getScore(
         @Header("credential") credential: String = MONI_API_CREDENTIAL,
         @Path("dni") dni: String

@@ -12,6 +12,7 @@ import com.moni.scoreapp.data.remote.models.Fields
 import com.moni.scoreapp.data.remote.models.Genero
 import com.moni.scoreapp.data.remote.models.Nombre
 import com.moni.scoreapp.data.remote.models.RecordListRs
+import com.moni.scoreapp.data.remote.models.RecordRq
 import com.moni.scoreapp.data.remote.models.RecordRs
 import com.moni.scoreapp.data.remote.models.ScoreRs
 import com.moni.scoreapp.data.remote.models.Status
@@ -58,8 +59,8 @@ class FakeScoreRepository : ScoreRepository {
         refreshLiveData()
     }
 
-    override suspend fun deleteRecord(recordItem: RecordItem) {
-        recordItems.remove(recordItem)
+    override suspend fun deleteRecord(id: String) {
+        recordItems.removeIf { it.id == id }
         refreshLiveData()
     }
 
@@ -105,7 +106,7 @@ class FakeScoreRepository : ScoreRepository {
         )
     }
 
-    override suspend fun createRecordFirebase(recordItem: RecordItem): Resource<RecordRs> {
+    override suspend fun createRecordFirebase(recordRq: RecordRq): Resource<RecordRs> {
         if (shouldReturnNetworkError) {
             return Resource.error("Error", null)
         }

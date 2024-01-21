@@ -78,7 +78,7 @@ class ScoreDaoTest {
     @Test
     fun deleteRecordItem() = runBlocking {
         dao.insertRecord(mockRecordItem)
-        dao.deleteRecord(mockRecordItem)
+        dao.deleteRecord(mockRecordItem.id)
 
         val allRecordItemS = dao.getAllRecords().getOrAwaitValue()
 

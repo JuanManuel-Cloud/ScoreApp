@@ -69,6 +69,7 @@ dependencies {
     val fragmentVersion = "1.6.2"
     val navigationVersion = "2.7.6"
     val testingCoreArchVersion = "2.2.0"
+    val okHttpVersion = "4.7.2"
 
     implementation("androidx.core:core-ktx:$androidxCoreVersion")
     implementation("androidx.appcompat:appcompat:$androidxAppCompatVersion")
@@ -94,6 +95,9 @@ dependencies {
     // Retrofit 2
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+
+    // OkHttp3
+    implementation("com.squareup.okhttp3:logging-interceptor:$okHttpVersion")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$corutinesVersion")
@@ -137,4 +141,7 @@ dependencies {
     kaptAndroidTest("com.google.dagger:hilt-compiler:$hiltVersion")
     testImplementation("com.google.dagger:hilt-android-testing:$hiltVersion")
     kaptTest("com.google.dagger:hilt-compiler:$hiltVersion")
+
+    // Testing-Coroutines
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$corutinesVersion")
 }

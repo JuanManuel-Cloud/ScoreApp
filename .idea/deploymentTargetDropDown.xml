@@ -8,16 +8,10 @@
       <entry key="app">
         <State />
       </entry>
-      <entry key="deleteShoppingItem()">
-        <State />
-      </entry>
-      <entry key="getRecordsByDni()">
+      <entry key="deleteRecordItem()">
         <State />
       </entry>
       <entry key="getRecordsByName()">
-        <State />
-      </entry>
-      <entry key="insertRecordItem()">
         <State />
       </entry>
       <entry key="moni">

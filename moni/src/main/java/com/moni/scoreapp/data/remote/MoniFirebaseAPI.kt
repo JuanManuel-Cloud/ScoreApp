@@ -9,12 +9,12 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface MoniFirebaseAPI {
-    @GET
+    @GET("/v1/projects/wired-torus-98413/databases/(default)/documents/users/")
     suspend fun getRecordsFirebase(): Response<RecordListRs>
 
-    @POST
+    @POST("/v1/projects/wired-torus-98413/databases/(default)/documents/users/")
     suspend fun createRecordFirebase(req: RecordRq): Response<RecordRs>
 
-    @DELETE("{id}")
+    @DELETE("/v1/projects/wired-torus-98413/databases/(default)/documents/users/{id}")
     suspend fun deleteRecordFirebase(id: String): Response<Unit>
 }
