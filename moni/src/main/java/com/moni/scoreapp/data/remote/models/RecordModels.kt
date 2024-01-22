@@ -12,7 +12,7 @@ data class ScoreRs(
 )
 
 data class RecordListRs(
-    val documents: List<RecordRs>
+    val documents: List<RecordRs>?
 )
 
 data class RecordRs(

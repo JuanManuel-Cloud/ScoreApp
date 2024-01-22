@@ -41,6 +41,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun getScore(dni: String) = viewModelScope.launch {
+        _scoreStatus.postValue(Event(Resource.loading(null)))
         val scoreRs = scoreRepository.getScore(dni)
 
         when (scoreRs.status) {
@@ -61,8 +62,8 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun findRecords(query: String) {
-        val newSource = scoreRepository.findRecords(query)
+    fun findRecords(query: String, all: Boolean = false) {
+        val newSource = scoreRepository.findRecords(query, all)
         _records.removeSource(filteredRecords)
         _records.addSource(newSource) {
             _records.value = it
@@ -71,39 +72,35 @@ class HomeViewModel @Inject constructor(
     }
 
     fun getRecordsFirebase() = viewModelScope.launch {
-        scoreRepository.getRecordsFirebase()
+        _recordStatus.postValue(Event(Resource.loading(null)))
+        resHandler(scoreRepository.getRecordsFirebase())
     }
 
     fun createRecordFirebase(recordRq: RecordRq) = viewModelScope.launch {
-        val recordRes = scoreRepository.createRecordFirebase(recordRq)
+        _recordStatus.postValue(Event(Resource.loading(null)))
+        resHandler(scoreRepository.createRecordFirebase(recordRq))
+    }
+
+    fun deleteRecordFirebase(id: String) = viewModelScope.launch {
+        _recordStatus.postValue(Event(Resource.loading(null)))
+        resHandler(scoreRepository.deleteRecordFirebase(id))
+    }
+
+    fun clearRecordRq() {
+        recordRq = null
+    }
+
+    private fun <T> resHandler(recordRes: Resource<T>) {
         when (recordRes.status) {
             ResStatus.SUCCESS ->
                 _recordStatus.postValue(Event(Resource.success(null)))
 
             ResStatus.ERROR -> {
                 _recordStatus.postValue(Event(Resource.error(recordRes.message!!, null)))
-                return@launch
+                return
             }
 
             else -> _recordStatus.postValue(Event(Resource.loading(null)))
         }
-    }
-
-    fun deleteRecordFirebase(id: String) = viewModelScope.launch {
-        val recordRes = scoreRepository.deleteRecordFirebase(id)
-        when (recordRes.status) {
-            ResStatus.SUCCESS -> _recordStatus.postValue(Event(Resource.success(null)))
-
-            ResStatus.ERROR -> {
-                _recordStatus.postValue(Event(Resource.error(recordRes.message!!, null)))
-                return@launch
-            }
-
-            else -> _recordStatus.postValue(Event(Resource.loading(null)))
-        }
-    }
-
-    fun clearRecordRq() {
-        recordRq = null
     }
 }

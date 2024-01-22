@@ -13,7 +13,7 @@ interface ScoreRepository {
     suspend fun insertManyRecords(recordItems: List<RecordItem>)
     suspend fun deleteRecord(id: String)
     fun getAllRecords(): LiveData<List<RecordItem>>
-    fun findRecords(query: String): LiveData<List<RecordItem>>
+    fun findRecords(query: String, all: Boolean = false): LiveData<List<RecordItem>>
     suspend fun getScore(dni: String): Resource<ScoreRs>
     suspend fun getRecordsFirebase(): Resource<RecordListRs>
     suspend fun createRecordFirebase(recordRq: RecordRq): Resource<RecordRs>

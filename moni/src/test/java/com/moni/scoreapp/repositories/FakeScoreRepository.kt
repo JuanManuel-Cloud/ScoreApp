@@ -68,7 +68,7 @@ class FakeScoreRepository : ScoreRepository {
         return observableRecords
     }
 
-    override fun findRecords(query: String): LiveData<List<RecordItem>> {
+    override fun findRecords(query: String, all: Boolean): LiveData<List<RecordItem>> {
         return observableRecords
     }
 

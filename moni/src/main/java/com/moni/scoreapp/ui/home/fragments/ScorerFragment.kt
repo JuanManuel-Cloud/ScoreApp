@@ -4,9 +4,10 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.RadioButton
-import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.moni.scoreapp.R
@@ -55,6 +56,8 @@ class ScorerFragment : Fragment() {
 
         viewModel.scoreStatus.observe(viewLifecycleOwner) {
             val content = it.getContentIfNotHandled()
+            binding.scorerLoading.visibility =
+                if (content?.status == ResStatus.LOADING) VISIBLE else INVISIBLE
             when (content?.status) {
                 ResStatus.SUCCESS -> onScoreRqSuccess(content)
 
@@ -66,12 +69,7 @@ class ScorerFragment : Fragment() {
 
         viewModel.recordStatus.observe(viewLifecycleOwner) {
             val content = it.getContentIfNotHandled()
-            if (content?.status == ResStatus.ERROR)
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.server_error),
-                    Toast.LENGTH_LONG
-                ).show()
+            if (content?.status == ResStatus.ERROR) onStatusError()
         }
     }
 
@@ -98,7 +96,9 @@ class ScorerFragment : Fragment() {
 
     private fun setTextChangedListeners() {
         binding.homeName.editText?.doAfterTextChanged { input ->
-            binding.homeName.isErrorEnabled = !Validators.validateNameOrLastname(input.toString())
+            binding.homeName.isErrorEnabled =
+                !Validators.validateNameOrLastname(input.toString()) && input.toString()
+                    .isNotBlank()
             binding.homeName.error = if (binding.homeName.isErrorEnabled)
                 getString(R.string.input_name_error)
             else
@@ -108,7 +108,8 @@ class ScorerFragment : Fragment() {
 
         binding.homeLastname.editText?.doAfterTextChanged { input ->
             binding.homeLastname.isErrorEnabled =
-                !Validators.validateNameOrLastname(input.toString())
+                !Validators.validateNameOrLastname(input.toString()) && input.toString()
+                    .isNotBlank()
             binding.homeLastname.error = if (binding.homeLastname.isErrorEnabled)
                 getString(R.string.input_lastname_error)
             else
@@ -117,7 +118,8 @@ class ScorerFragment : Fragment() {
         }
 
         binding.homeDni.editText?.doAfterTextChanged { input ->
-            binding.homeDni.isErrorEnabled = !Validators.validateDni(input.toString())
+            binding.homeDni.isErrorEnabled =
+                !Validators.validateDni(input.toString()) && input.toString().isNotBlank()
             binding.homeDni.error = if (binding.homeDni.isErrorEnabled)
                 getString(R.string.input_dni_error)
             else
@@ -126,7 +128,8 @@ class ScorerFragment : Fragment() {
         }
 
         binding.homeEmail.editText?.doAfterTextChanged { input ->
-            binding.homeEmail.isErrorEnabled = !Validators.validateEmail(input.toString())
+            binding.homeEmail.isErrorEnabled =
+                !Validators.validateEmail(input.toString()) && input.toString().isNotBlank()
             binding.homeEmail.error = if (binding.homeEmail.isErrorEnabled)
                 getString(R.string.input_email_error)
             else

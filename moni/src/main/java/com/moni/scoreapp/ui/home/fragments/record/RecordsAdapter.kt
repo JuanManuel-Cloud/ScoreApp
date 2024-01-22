@@ -18,14 +18,15 @@ import kotlin.math.max
 
 class RecordsAdapter(
     val context: Context,
-    private var records: List<RecordGuiModel>
+    var records: List<RecordGuiModel>,
+    private val onDeleteListener: (String) -> Unit
 ) : RecyclerView.Adapter<ViewHolder>() {
 
     inner class RecordViewHolder(itemView: View) : ViewHolder(itemView) {
         private val clientName: TextView = itemView.findViewById(R.id.card_name)
         private val date: TextView = itemView.findViewById(R.id.card_date)
         private val cardIcon: ImageView = itemView.findViewById(R.id.card_ic)
-        private val cardDelete: MaterialButton = itemView.findViewById(R.id.card_delete_btn)
+        private val cardDeleteBtn: MaterialButton = itemView.findViewById(R.id.card_delete_btn)
         private var currentRecord: RecordGuiModel? = null
 
         fun bind(record: RecordGuiModel) {
@@ -43,6 +44,7 @@ class RecordsAdapter(
                     cardIcon.setImageResource(R.drawable.ic_rejected)
                 }
             }
+            cardDeleteBtn.setOnClickListener { onDeleteListener(record.id) }
         }
     }
 

@@ -2,7 +2,6 @@ package com.moni.scoreapp.data.local.daos
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -24,6 +23,6 @@ interface ScoreDao {
     /**
      * Find records by name, lastname or dni
      */
-    @Query("SELECT * FROM record_item WHERE dni LIKE :query OR name LIKE :query OR lastname LIKE :query")
-    fun findRecords(query: String): LiveData<List<RecordItem>>
+    @Query("SELECT * FROM record_item WHERE (dni LIKE :query OR name LIKE :query OR lastname LIKE :query) || :all")
+    fun findRecords(query: String, all: Boolean = false): LiveData<List<RecordItem>>
 }

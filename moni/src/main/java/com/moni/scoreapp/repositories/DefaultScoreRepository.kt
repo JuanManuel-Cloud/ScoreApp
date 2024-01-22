@@ -1,5 +1,6 @@
 package com.moni.scoreapp.repositories
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.moni.scoreapp.data.local.daos.RecordItem
 import com.moni.scoreapp.data.local.daos.ScoreDao
@@ -35,8 +36,8 @@ class DefaultScoreRepository @Inject constructor(
         return scoreDao.getAllRecords()
     }
 
-    override fun findRecords(query: String): LiveData<List<RecordItem>> {
-        return scoreDao.findRecords(query)
+    override fun findRecords(query: String, all: Boolean): LiveData<List<RecordItem>> {
+        return scoreDao.findRecords(query, all)
     }
 
     override suspend fun getScore(dni: String): Resource<ScoreRs> = try {
@@ -49,9 +50,12 @@ class DefaultScoreRepository @Inject constructor(
     override suspend fun getRecordsFirebase(): Resource<RecordListRs> {
         try {
             val response = moniFirebaseAPI.getRecordsFirebase()
+            Log.i("Repository", "RESPONSE = $response")
             val res = checkResponse(response)
+            Log.i("Repository", "RES = $res")
             if (res.status == ResStatus.ERROR) return res
             res.data as RecordListRs
+            res.data.documents ?: return Resource.success(null)
 
             val records = res.data.documents.map {
                 val fields = it.fields
