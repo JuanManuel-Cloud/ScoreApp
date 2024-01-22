@@ -1,6 +1,5 @@
 package com.moni.scoreapp.ui.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -21,6 +20,8 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val scoreRepository: ScoreRepository
 ) : ViewModel() {
+    var recordRq: RecordRq? = null
+
     private val allRecords: LiveData<List<RecordItem>> = scoreRepository.getAllRecords()
     private var filteredRecords: LiveData<List<RecordItem>> = MutableLiveData()
     private val _records: MediatorLiveData<List<RecordItem>> = MediatorLiveData()
@@ -100,5 +101,9 @@ class HomeViewModel @Inject constructor(
 
             else -> _recordStatus.postValue(Event(Resource.loading(null)))
         }
+    }
+
+    fun clearRecordRq() {
+        recordRq = null
     }
 }

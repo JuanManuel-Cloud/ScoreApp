@@ -36,7 +36,7 @@ data class Fields(
     val email: Email,
     val genero: Genero,
     val nombre: Nombre,
-    val status: Status
+    val status: Status?
 )
 
 data class Nombre(val stringValue: String)
@@ -44,4 +44,4 @@ data class Apellido(val stringValue: String)
 data class Dni(val stringValue: String)
 data class Email(val stringValue: String)
 data class Genero(val stringValue: Genders)
-data class Status(val stringValue: RecordStatus)
+data class Status(val stringValue: RecordStatus?)

@@ -84,26 +84,16 @@ class ScorerFragment : Fragment() {
     }
 
     private fun onScoreRqSuccess(content: Resource<ScoreRs>) {
-        val selectedRb =
-            requireActivity().findViewById(binding.homeRbGroup.checkedRadioButtonId) as RadioButton
+        val status = content.data?.status
 
-        viewModel.createRecordFirebase(
-            RecordRq(
-                Fields(
-                    nombre = Nombre(binding.homeName.editText!!.text.toString()),
-                    apellido = Apellido(binding.homeLastname.editText!!.text.toString()),
-                    dni = Dni(binding.homeDni.editText?.text.toString()),
-                    email = Email(binding.homeEmail.editText?.text.toString()),
-                    genero = Genero(Genders.displayGender(selectedRb.text.toString())),
-                    status = Status(RecordStatus.APPROVE)
-                )
-            )
-        )
+        saveRecordRqState(status)
+        viewModel.createRecordFirebase(viewModel.recordRq!!)
 
-        if (content.data?.status == RecordStatus.APPROVE)
+        if (content.data?.status == RecordStatus.APPROVE) {
             (activity as HomeActivity).goToApprovedFragment()
-        else
+        } else {
             (activity as HomeActivity).goToRejectedFragment()
+        }
     }
 
     private fun setTextChangedListeners() {
@@ -150,6 +140,71 @@ class ScorerFragment : Fragment() {
                 b.homeLastname.let { ln -> ln.isErrorEnabled || ln.editText?.text.isNullOrBlank() } ||
                 b.homeDni.let { dni -> dni.isErrorEnabled || dni.editText?.text.isNullOrBlank() } ||
                 b.homeEmail.let { he -> he.isErrorEnabled || he.editText?.text.isNullOrBlank() }
+    }
+
+    private fun saveRecordRqState(status: RecordStatus? = null) {
+        val selectedRb =
+            requireActivity().findViewById(binding.homeRbGroup.checkedRadioButtonId) as RadioButton
+
+        viewModel.recordRq = RecordRq(
+            Fields(
+                nombre = Nombre(binding.homeName.editText!!.text.toString()),
+                apellido = Apellido(binding.homeLastname.editText!!.text.toString()),
+                dni = Dni(binding.homeDni.editText?.text.toString()),
+                email = Email(binding.homeEmail.editText?.text.toString()),
+                genero = Genero(Genders.displayGender(selectedRb.text.toString())),
+                status = Status(status)
+            )
+        )
+    }
+
+    private fun recoverRqDataFromVM() {
+        val fields = viewModel.recordRq?.fields
+        if (fields == null) {
+            clearFields()
+            return
+        }
+
+        binding.homeName.editText?.setText(fields.nombre.stringValue)
+        binding.homeLastname.editText?.setText(fields.apellido.stringValue)
+        binding.homeDni.editText?.setText(fields.dni.stringValue)
+        binding.homeEmail.editText?.setText(fields.email.stringValue)
+        when (fields.genero.stringValue) {
+            Genders.MALE -> binding.homeRbGroup.check(binding.homeRbM.id)
+            Genders.FEMALE -> binding.homeRbGroup.check(binding.homeRbF.id)
+            Genders.OTHER -> binding.homeRbGroup.check(binding.homeRbX.id)
+        }
+    }
+
+    private fun clearFields() {
+        binding.homeName.let {
+            it.editText?.setText("")
+            it.isErrorEnabled = false
+        }
+        binding.homeLastname.let {
+            it.editText?.setText("")
+            it.isErrorEnabled = false
+        }
+        binding.homeDni.let {
+            it.editText?.setText("")
+            it.isErrorEnabled = false
+        }
+        binding.homeEmail.let {
+            it.editText?.setText("")
+            it.isErrorEnabled = false
+        }
+        binding.homeRbGroup.check(binding.homeRbM.id)
+        binding.homeEvaluate.isEnabled = false
+    }
+
+    override fun onPause() {
+        super.onPause()
+        saveRecordRqState()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        recoverRqDataFromVM()
     }
 
     override fun onDestroyView() {

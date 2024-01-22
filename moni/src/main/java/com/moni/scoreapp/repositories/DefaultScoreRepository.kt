@@ -1,6 +1,5 @@
 package com.moni.scoreapp.repositories
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.moni.scoreapp.data.local.daos.RecordItem
 import com.moni.scoreapp.data.local.daos.ScoreDao
@@ -63,7 +62,7 @@ class DefaultScoreRepository @Inject constructor(
                     dni = fields.dni.stringValue,
                     email = fields.email.stringValue,
                     gender = fields.genero.stringValue,
-                    status = fields.status.stringValue,
+                    status = fields.status?.stringValue!!,
                     createdDate = it.createTime
                 )
             }
@@ -90,7 +89,7 @@ class DefaultScoreRepository @Inject constructor(
                     dni = fields.dni.stringValue,
                     email = fields.email.stringValue,
                     gender = fields.genero.stringValue,
-                    status = fields.status.stringValue,
+                    status = fields.status?.stringValue!!,
                     createdDate = record.createTime
                 )
             )
