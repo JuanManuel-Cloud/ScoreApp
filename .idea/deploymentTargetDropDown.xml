@@ -8,9 +8,6 @@
       <entry key="app">
         <State />
       </entry>
-      <entry key="deleteRecordItem()">
-        <State />
-      </entry>
       <entry key="moni">
         <State>
           <targetSelectedWithDropDown>
@@ -19,12 +16,12 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Pixel_7_API_33.avd" />
+                  <value value="$USER_HOME$/.android/avd/Pixel-7-API-33.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-01-22T02:36:33.825062857Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-01-25T21:24:24.790182314Z" />
         </State>
       </entry>
     </value>

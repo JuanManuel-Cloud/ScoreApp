@@ -16,7 +16,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        buildConfigField("String", "MONI_API_CREDENTIAL", "\"ZGpzOTAzaWZuc2Zpb25kZnNubm5u\"")
+        buildConfigField("String", "MONI_API_CREDENTIAL", "\"<YOUR_API_TOKEN>\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
